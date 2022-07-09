@@ -1,0 +1,60 @@
+
+    openapi: 3.0.0
+    info: 
+        title: Users Documentation
+        description: This is the documentation of the Users API.
+        version: 1.0.0
+        contact: 
+            email: luanrlima9@gmail.com
+        
+    
+    paths: 
+        /users/:user_id: 
+            get: 
+                tags: Users
+                summary: FindById
+                description: Find for user by  id
+                parameters: 
+                    - name: user_id
+                        in: path
+                        required: true
+                        description: User id to look for
+                        example: 1
+                        schema: 
+                            type: integer
+                            minimum: 1
+                       
+                responses: 
+                    '200': 
+                        description: Success
+                        content: 
+                            application/json: 
+                                schema: 
+                                    type: object
+                                        properties: 
+                                            id: 
+                                                type: integer
+                                           
+                                            name: 
+                                                type: string
+                                           
+                                            admin: 
+                                                type: boolean
+                                           
+                                            email: 
+                                                type: string
+                                           
+                                            created_at: 
+                                                type: Date
+                                           
+                                            updated_at: 
+                                                type: Date
+                                        example: 
+                                            id: 1
+                                            name: Jessica Right
+                                            admin: false
+                                            email: jesse@example.com
+                                            created_at: 22-06-2022-14:20:20
+                                            updated_at: 22-06-2022-15:20:20
+                            500: 
+                                description: There is no user corresponding to this id
